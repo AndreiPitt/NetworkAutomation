@@ -91,10 +91,10 @@ You can add multiple devices to the list, allowing you to manage and automate co
 
 ## Usage
 
-Run the tool by executing the `menu.py` script:
+Run the tool by executing the `main.py` script:
 
 ```bash
-python menu.py
+python main.py
 ```
 
 ### Menu System
