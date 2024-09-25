@@ -14,14 +14,29 @@ if __name__ == "__main__":
     if device.type_device == "router":
         if myoption == 1:
             print("Configure interface")
+            device.configure_interface(connector)
+            connector.view_output()
+            connector.close()
         elif myoption == 2:
             print("Configure intervlan")
+            device.configure_intervlan(connector)
+            connector.view_output()
+            connector.close()
         elif myoption == 3:
             print("Configure RIP v2")
+            device.configure_rip_v2(connector)
+            connector.view_output()
+            connector.close()
         elif myoption == 4:
             print("Configure DHCP")
+            device.configure_dhcp(connector)
+            connector.view_output()
+            connector.close()
         elif myoption == 5:
             print("Configure HSRP")
+            device.configure_hsrp(connector)
+            connector.view_output()
+            connector.close()
         elif myoption == 6:
             print("Test ping")
             device.test_ping(connector)
@@ -35,12 +50,24 @@ if __name__ == "__main__":
             connector.close()
         elif myoption == 2:
             print("Configure Security")
+            device.configure_security(connector)
+            connector.view_output()
+            connector.close()
         elif myoption == 3:
             print("Configure STP")
+            device.configure_stp(connector)
+            connector.view_output()
+            connector.close()
         elif myoption == 4:
             print("Configure RSTP")
+            device.configure_rstp(connector)
+            connector.view_output()
+            connector.close()
         elif myoption == 5:
             print("Configure HSRP")
+            device.configure_hsrp(connector)
+            connector.view_output()
+            connector.close()
         elif myoption == 6:
             print("Test ping")
             device.test_ping(connector)
