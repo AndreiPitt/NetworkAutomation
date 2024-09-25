@@ -20,8 +20,8 @@ def run_main() -> None:
                 print("Configure interface")
                 device.configure_interface(connector)
             elif myoption == 2:
-                print("Configure intervlan")
-                device.configure_intervlan(connector)
+                print("Configure static route")
+                device.configure_staticroute(connector)
             elif myoption == 3:
                 print("Configure RIP v2")
                 device.configure_rip_v2(connector)

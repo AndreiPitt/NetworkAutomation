@@ -69,7 +69,7 @@ class Menu:
         print(f"Options for {item.name} ({item.type_device}):")
         if item.type_device == 'router':
             print("    1. Configure interface")
-            print("    2. Configure intervlan")
+            print("    2. Configure static route")
             print("    3. Configure RIP v2")
             print("    4. Configure DHCP")
             print("    5. Configure HSRP")
