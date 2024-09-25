@@ -30,6 +30,9 @@ if __name__ == "__main__":
     elif device.type_device == "switch":
         if myoption == 1:
             print("Configure VLAN")
+            device.configure_vlan(connector)
+            connector.view_output()
+            connector.close()
         elif myoption == 2:
             print("Configure Security")
         elif myoption == 3:

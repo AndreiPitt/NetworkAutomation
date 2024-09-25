@@ -53,6 +53,6 @@ class Devices:
         Tests network connectivity by sending a ping from the switch to another device.
         """
         ip = input("What is the IP address of the device you want to ping? ")
+        print(f"Testing ping from device to ip {ip}")
         connector.send_command(f'do ping {ip}\n')
         time.sleep(2)
-        print(f"Testing ping from device to ip {ip}")

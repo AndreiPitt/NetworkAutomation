@@ -1,3 +1,5 @@
+import time
+
 from Devices import Devices
 
 
@@ -29,7 +31,8 @@ class Switch(Devices):
         vlan = input("Please enter the name of the VLAN you want to be allowed to pass: ")
         ip = input("Enter the ip address: ")
         sm = input("Please enter the subnet mask: ")
-        command = connector.send_command(f"int vlan {vlan}\nip add {ip} {sm}\nno sh\nexit")
+        command = connector.send_command(f"int vlan {vlan}\nip add {ip} {sm}\nno sh\nexit\n")
+        time.sleep(2)
 
     def configure_security(self, connector: object) -> None:
         """
