@@ -11,7 +11,6 @@
 - [Configuration](#configuration)
   - [Device Configurations](#device-configurations)
 - [Usage](#usage)
-  - [Menu System](#menu-system)
 - [Code Overview](#code-overview)
   - [Device Management](#device-management)
   - [Router Configuration](#router-configuration)
@@ -96,18 +95,6 @@ Run the tool by executing the `main.py` script:
 ```bash
 python main.py
 ```
-
-### Menu System
-
-The tool offers an interactive CLI-driven menu that allows you to manage devices and perform configuration tasks:
-
-1. **View Devices**: Displays a list of all devices.
-2. **Add a Device**: Allows you to add a new device to the system.
-3. **Remove a Device**: Deletes an existing device.
-4. **Connect to a Device**: Establishes an SSH connection to a selected device.
-5. **Configure a Router**: Automates router-specific tasks (e.g., setting up interfaces, routing).
-
----
 
 ## Code Overview
 
