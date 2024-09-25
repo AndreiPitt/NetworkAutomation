@@ -74,6 +74,7 @@ class Menu:
             print("    4. Configure DHCP")
             print("    5. Configure HSRP")
             print("    6. Test ping")
+            print("    7. Save")
 
         elif item.type_device == 'switch':
             print("    1. Configure VLAN")
@@ -82,3 +83,4 @@ class Menu:
             print("    4. Configure RSTP")
             print("    5. Configure HSRP")
             print("    6. Test ping")
+            print("    7. Save")

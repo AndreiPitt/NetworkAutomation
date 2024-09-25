@@ -69,13 +69,13 @@ class Devices:
             id_standby = input("Enter the standby number: ")
             ip_virtual = input("Enter the ip address of the virtual router: ")
 
-            command = connector.send_command(f'interface {interface}\nno sw\nstandby version 2\nip add {ip} {sm}\n'
-                                             f'standby {id_standby} ip {ip_virtual}\n'
-                                             f'standby {id_standby} pree\n')
+            connector.send_command(f'interface {interface}\nno sw\nstandby version 2\nip add {ip} {sm}\n'
+                                   f'standby {id_standby} ip {ip_virtual}\n'
+                                   f'standby {id_standby} pree\n')
             time.sleep(2)
             priority = input("Do you want to set priority on this interface? (yes/no)")
             if priority == "yes":
-                command = connector.send_command(f"standby {id_standby} pri 109")
+                connector.send_command(f"standby {id_standby} pri 109")
         if int_or_vlan == "vlan":
             vlan = input("Enter the name of the vlan you want to configure HSRP.")
             ip = input("Enter the ip address: ")
@@ -83,10 +83,17 @@ class Devices:
             id_standby = input("Enter the standby number: ")
             ip_virtual = input("Enter the ip address of the virtual router: ")
 
-            command = connector.send_command(f'vlan {vlan}\nenc dot {vlan}\nstandby version 2\nip add {ip} {sm}\n'
-                                             f'standby {id_standby} ip {ip_virtual}\n'
-                                             f'standby {id_standby} pree\n')
+            connector.send_command(f'vlan {vlan}\nenc dot {vlan}\nstandby version 2\nip add {ip} {sm}\n'
+                                   f'standby {id_standby} ip {ip_virtual}\n'
+                                   f'standby {id_standby} pree\n')
             time.sleep(2)
             priority = input("Do you want to set priority on this interface? (yes/no)")
             if priority == "yes":
-                command = connector.send_command(f"standby {id_standby} pri 109")
+                connector.send_command(f"standby {id_standby} pri 109")
+
+    def save_config(self, connector: object) -> None:
+        """
+        Save your config on this device.
+        """
+        connector.send_command('do wr\n')
+        time.sleep(2)

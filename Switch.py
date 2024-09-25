@@ -48,7 +48,8 @@ class Switch(Devices):
         connector.send_command(f'int {interface}\nswitchport mode access'
                                f'\nswitchport access vlan {vlan}'
                                f'\nswitchport port-security\nswitchport port-security maximum {mac}'
-                               f'\nswitchport port-security violation {violation_type}\n')
+                               f'\nswitchport port-security violation {violation_type}'
+                               f'\nspanning-tree bpduguard disable\n')
         time.sleep(2)
 
     def configure_stp(self, connector: object) -> None:
@@ -61,13 +62,14 @@ class Switch(Devices):
         vlans = input("Please enter the name of the VLAN you want to be allowed to pass: ")
         root_bridge = input("Do you want to configure root bridge on this device? (yes/no) ")
         if root_bridge == "yes":
-            vlan_prim = input("Enter the range of the VLANs you want to be root primmary.")
-            vlan_sec = input("Enter the range of the VLANs you want to be root secondary.")
+            vlan_prim = input("Enter the range of the VLANs you want to be root primmary. ")
+            vlan_sec = input("Enter the range of the VLANs you want to be root secondary. ")
 
             connector.send_command(f'interface range {interfaces}\nenc dot'
                                    f'\nsw mo tr\nsw tr all vlan {vlans}'
                                    f'\nexit\nspanning-tree vlan {vlan_sec} root sec'
-                                   f'\nspanning-tree vlan {vlan_prim} root prim\n')
+                                   f'\nspanning-tree vlan {vlan_prim} root prim'
+                                   f'\nspanning-tree portfast\n')
             time.sleep(2)
         else:
             connector.send_command(f'interface range {interfaces}\nenc dot'
@@ -92,3 +94,6 @@ class Switch(Devices):
 
     def test_ping(self, connector: object) -> None:
         return super().test_ping(connector)
+
+    def save_config(self, connector: object) -> None:
+        super().save_config(connector)

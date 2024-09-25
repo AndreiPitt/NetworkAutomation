@@ -96,3 +96,8 @@ class Router(Devices):
 
     def test_ping(self, connector: object) -> None:
         return super().test_ping(connector)
+
+    def save_config(self, connector: object) -> None:
+        super().save_config(connector)
+
+

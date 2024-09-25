@@ -34,6 +34,8 @@ def run_main() -> None:
             elif myoption == 6:
                 print("Test ping")
                 device.test_ping(connector)
+            elif myoption == 7:
+                device.save_config(connector)
             else:
                 print("This command does not exist!")
         elif device.type_device == "switch":
@@ -55,6 +57,8 @@ def run_main() -> None:
             elif myoption == 6:
                 print("Test ping")
                 device.test_ping(connector)
+            elif myoption == 7:
+                device.save_config(connector)
             else:
                 print("This command does not exist!")
 
