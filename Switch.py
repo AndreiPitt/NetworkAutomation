@@ -31,7 +31,7 @@ class Switch(Devices):
         vlan = input("Please enter the name of the VLAN you want to be allowed to pass: ")
         ip = input("Enter the ip address: ")
         sm = input("Please enter the subnet mask: ")
-        connector.send_command(f"int vlan {vlan}\nip add {ip} {sm}\nno sh\nexit\n")
+        connector.send_command(f"int vlan {vlan}\nip add {ip} {sm}\nno sh\n")
         time.sleep(2)
 
     def configure_security(self, connector: object) -> None:
@@ -46,9 +46,9 @@ class Switch(Devices):
         mac = input("How many MAC addresses do you want to have on the port?")
         violation_type = input("What should the device do if the security is breached?")
         connector.send_command(f'int {interface}\nswitchport mode access'
-                                         f'\nswitchport access vlan {vlan}'
-                                         f'\nswitchport port-security\nswitchport port-security maximum {mac}'
-                                         f'\nswitchport port-security violation {violation_type}\nexit\n')
+                               f'\nswitchport access vlan {vlan}'
+                               f'\nswitchport port-security\nswitchport port-security maximum {mac}'
+                               f'\nswitchport port-security violation {violation_type}\n')
         time.sleep(2)
 
     def configure_stp(self, connector: object) -> None:
@@ -65,13 +65,13 @@ class Switch(Devices):
             vlan_sec = input("Enter the range of the VLANs you want to be root secondary.")
 
             connector.send_command(f'interface range {interfaces}\nenc dot'
-                                             f'\nsw mo tr\nsw tr all vlan {vlans}'
-                                             f'\nexit\nspanning-tree vlan {vlan_sec} root sec'
-                                             f'\nspanning-tree vlan {vlan_prim} root prim\nexit\n')
+                                   f'\nsw mo tr\nsw tr all vlan {vlans}'
+                                   f'\nexit\nspanning-tree vlan {vlan_sec} root sec'
+                                   f'\nspanning-tree vlan {vlan_prim} root prim\n')
             time.sleep(2)
         else:
             connector.send_command(f'interface range {interfaces}\nenc dot'
-                                             f'\nsw mo tr\nsw tr all vlan {vlans}\n')
+                                   f'\nsw mo tr\nsw tr all vlan {vlans}\n')
 
     def configure_rstp(self, connector: object) -> None:
         """
@@ -79,7 +79,7 @@ class Switch(Devices):
         This method helps in quickly recovering from network changes.
         """
         print(f"Configuring Rapid Spanning Tree Protocol (RSTP) on switch {self.name}...")
-        connector.send_command(f'span mode rap\nexit')
+        connector.send_command(f'span mode rap\n')
         time.sleep(2)
 
     def configure_hsrp(self, connector: object) -> None:

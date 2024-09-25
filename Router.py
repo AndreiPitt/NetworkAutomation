@@ -33,7 +33,7 @@ class Router(Devices):
         interface = input("Please enter the name of the interface you want to apply security to: ")
         ip = input("Enter the IP Address: ")
         sm = input("Enter the subnet mask: ")
-        connector.send_command(f"int {interface}\nip add {ip} {sm}\nno sh\nexit")
+        connector.send_command(f"int {interface}\nip add {ip} {sm}\nno sh\n")
         time.sleep(2)
 
     def configure_staticroute(self, connector: object) -> None:
@@ -63,11 +63,11 @@ class Router(Devices):
         redistribute = input("Do you want to use redistribute? (yes / no)")
         if redistribute == "yes":
             connector.send_command(f'router rip\nversion 2\nno auto-summary\nnetwork {network_1}\n'
-                                             f'network {network_2}\n')
+                                   f'network {network_2}\n')
             time.sleep(2)
         else:
             connector.send_command(f'router rip\nversion 2\nno auto-summary\nredistribute static\n'
-                                             f'network {network_1}\nnetwork {network_2}\n')
+                                   f'network {network_1}\nnetwork {network_2}\n')
             time.sleep(2)
 
     def configure_dhcp(self, connector: object) -> None:
@@ -82,8 +82,8 @@ class Router(Devices):
         def_router = input("Default-router: ")
         dns = input("DNS: ")
         connector.send_command(f"ip dhcp excluded-address {excluded_address}\nip dhcp pool {pool}\n"
-                                         f"network {network}\ndefault-router {def_router}\n"
-                                         f"dns-server {dns}\nexit\n")
+                               f"network {network}\ndefault-router {def_router}\n"
+                               f"dns-server {dns}\n")
         time.sleep(2)
 
     def configure_hsrp(self, connector: object) -> None:
