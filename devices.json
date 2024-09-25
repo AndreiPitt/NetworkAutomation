@@ -2,7 +2,7 @@
 [
   {
     "type": "switch",
-    "name": "Switch1",
+    "name": "SW1",
     "ip": "192.168.1.251",
     "username": "admin",
     "password": "cisco",
@@ -10,7 +10,7 @@
   },
   {
     "type": "switch",
-    "name": "Switch2",
+    "name": "SW2",
     "ip": "192.168.1.252",
     "username": "admin",
     "password": "cisco",
@@ -18,7 +18,7 @@
   },
   {
     "type": "switch",
-    "name": "Switch3",
+    "name": "SW3",
     "ip": "192.168.1.253",
     "username": "admin",
     "password": "cisco",
@@ -26,7 +26,7 @@
   },
   {
     "type": "switch",
-    "name": "Switch4",
+    "name": "SW4",
     "ip": "192.168.1.254",
     "username": "admin",
     "password": "cisco",
@@ -34,7 +34,7 @@
   },
   {
     "type": "switch",
-    "name": "Switch5",
+    "name": "SW5",
     "ip": "172.16.1.253",
     "username": "admin",
     "password": "cisco",
@@ -42,7 +42,7 @@
   },
   {
     "type": "switch",
-    "name": "Switch6",
+    "name": "SW6",
     "ip": "172.16.1.254",
     "username": "admin",
     "password": "cisco",
@@ -83,7 +83,7 @@
   {
     "type": "router",
     "name": "R1",
-    "ip": "192.168.1.1",
+    "ip": "192.168.1.3",
     "username": "admin",
     "password": "cisco",
     "privileged_password": "class"
