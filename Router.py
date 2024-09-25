@@ -1,3 +1,5 @@
+import time
+
 from Devices import Devices
 
 
@@ -32,6 +34,7 @@ class Router(Devices):
         ip = input("Enter the IP Address: ")
         sm = input("Enter the subnet mask: ")
         command = connector.send_command(f"int {interface}\nip add {ip} {sm}\nno sh\nexit")
+        time.sleep(2)
 
     def configure_intervlan(self, connector: object) -> None:
         """
@@ -50,9 +53,8 @@ exit
 
         def foo(start, stop, pas, interface):
             for subint in range(start, stop, pas):
-                stdout, stderr = connector.send_command(f"int {interface}.{subint}\nenc dot {subint}\nstandby version 2"
-                                                        f"\n ip add")
-                return ((stdout, stderr),)
+                command = connector.send_command(f"int {interface}.{subint}\nenc dot {subint}\nstandby version 2"
+                                                 f"\n ip add")
 
     def configure_rip_v2(self, connector: object) -> None:
         """
@@ -66,10 +68,12 @@ exit
         redistribute = input("Do you want to use redistribute? (yes / no)")
         if redistribute == "yes":
             command = connector.send_command(f'router rip\nversion 2\nno auto-summary\nnetwork {network_1}\n'
-                                             f'network {network_2}')
+                                             f'network {network_2}\n')
+            time.sleep(2)
         else:
             command = connector.send_command(f'router rip\nversion 2\nno auto-summary\nredistribute static\n'
-                                             f'network {network_1}\nnetwork {network_2}')
+                                             f'network {network_1}\nnetwork {network_2}\n')
+            time.sleep(2)
 
     def configure_dhcp(self, connector: object) -> None:
         """
@@ -84,7 +88,8 @@ exit
         dns = input("DNS: ")
         command = connector.send_command(f"ip dhcp excluded-address {excluded_address}\nip dhcp pool {pool}\n"
                                          f"network {network}\ndefault-router {def_router}\n"
-                                         f"dns-server {dns}\nexit")
+                                         f"dns-server {dns}\nexit\n")
+        time.sleep(2)
 
     def configure_hsrp(self, connector: object) -> None:
         """

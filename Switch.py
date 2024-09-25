@@ -48,7 +48,8 @@ class Switch(Devices):
         command = connector.send_command(f'int {interface}\nswitchport mode access'
                                          f'\nswitchport access vlan {vlan}'
                                          f'\nswitchport port security\nswitchport port security maximum {mac}'
-                                         f'\nswitchport port-security violation {violation_type}\nexit')
+                                         f'\nswitchport port-security violation {violation_type}\nexit\n')
+        time.sleep(2)
 
     def configure_stp(self, connector: object) -> None:
         """
@@ -63,7 +64,9 @@ class Switch(Devices):
 
         command = connector.send_command(f'interface range {interfaces}\nsw mo tr\nsw tr all vlan {vlans}'
                                          f'\nexit\nspanning-tree vlan {vlan_sec} root sec'
-                                         f'\nspanning-tree vlan {vlan_prim} root prim\nexit')
+                                         f'\nspanning-tree vlan {vlan_prim} root prim\nexit\n')
+
+        time.sleep(2)
 
     def configure_rstp(self, connector: object) -> None:
         """
@@ -72,33 +75,27 @@ class Switch(Devices):
         """
         print(f"Configuring Rapid Spanning Tree Protocol (RSTP) on switch {self.name}...")
         command = connector.send_command(f'span mode rap\nexit')
+        time.sleep(2)
 
     def configure_hsrp(self, connector: object) -> None:
         """
         Configures HSRP (Hot Standby Router Protocol) on the switch.
         HSRP provides high availability by allowing routers to take over if the primary fails.
-
-
-core sw 1
-interface g0/1
-no sw
-standby version 2
-ip add 20.20.20.1 255.255.255.0
-standby 20 ip 20.20.20.4
-standby 20 pree
-standby 20 pri 109
-exit
         """
         print(f"Configuring HSRP on switch {self.name}...")
-        interface = input("Enter the name of the interface you want")
+        interface = input("Enter the name of the interfaces you want to configure HSRP.")
         ip = input("Enter the ip address: ")
         sm = input("Please enter the subnet mask: ")
         id_standby = input("Enter the standby number: ")
         ip_virtual = input("Enter the ip address of the virtual router: ")
 
         command = connector.send_command(f'interface {interface}\nno sw\nstandby version 2\nip add {ip} {sm}\n'
-                                                f'standby {id_standby} ip {ip_virtual}\n'
-                                                f'standby {id_standby} pree')
+                                         f'standby {id_standby} ip {ip_virtual}\n'
+                                         f'standby {id_standby} pree\n')
+        time.sleep(2)
+        priority = input("Do you want to set priority on this interface? (yes/no)")
+        if priority == "yes":
+            command = connector.send_command(f"standby {id_standby} pri 109")
 
     def test_ping(self, connector: object) -> None:
         return super().test_ping(connector)

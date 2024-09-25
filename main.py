@@ -6,9 +6,9 @@ if __name__ == "__main__":
     menu = Menu()
     name = input("What is the name of the device you want to connect? ")
     device = Menu.pick_object(device_name=name)
-    print(f"This device exist! He belongs to the {type(device)}")
     connector = Connection(device)
     connector.connect()
+    print("The connection was  successfull!")
     menu.display_menu(item=device)
     myoption = Menu.pick_option()
     if device.type_device == "router":
