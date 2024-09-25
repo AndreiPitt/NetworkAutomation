@@ -47,7 +47,7 @@ class Switch(Devices):
         violation_type = input("What should the device do if the security is breached?")
         command = connector.send_command(f'int {interface}\nswitchport mode access'
                                          f'\nswitchport access vlan {vlan}'
-                                         f'\nswitchport port-security\nswitchport port-gecurity maximum {mac}'
+                                         f'\nswitchport port-security\nswitchport port-security maximum {mac}'
                                          f'\nswitchport port-security violation {violation_type}\nexit\n')
         time.sleep(2)
 
